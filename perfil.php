@@ -124,7 +124,7 @@ if(isset($nome_login)){
 	  
       <hr>
 	  <center>
-	  Sinais cadastrados por esse Você.
+	  Sinais cadastrados por Você.
 	  </center>
 	  <br>
 	  <center>
