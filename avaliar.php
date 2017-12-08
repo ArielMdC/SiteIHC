@@ -117,7 +117,7 @@ if(isset($nome_login)){
 	$busca = isset($_POST['palavra']) ? $_POST['palavra'] : ""  ;
 	
 	
-	//Pesquisar no banco de dados nome do curso referente a palavra digitada pelo usuário
+	
 	if(!empty($busca)){
 	$query_pesquisa = "SELECT * FROM videos WHERE significado LIKE '$busca%' OR email LIKE '$busca%'";
 	
