@@ -145,7 +145,7 @@ if(isset($nome_login)){
 	
 	
 	if(mysqli_num_rows($resultado_pesquisa) <= 0){
-		echo "Nenhum usuário encontrado.";
+		echo "Nenhum video encontrado.";
 	}else{
 		while($rows = mysqli_fetch_assoc($resultado_pesquisa)){
 			$link = $rows['link'];
