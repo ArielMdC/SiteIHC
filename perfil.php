@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once("conecta.php");
 $nome_login = $_SESSION['nome'];
 $email_login = $_SESSION['email'];
 
@@ -9,6 +9,8 @@ if(isset($nome_login)){
 	$_SESSION['mensagem'] = "Você precisa fazer o login para ver o seu perfil.";
 	header("Location: login.php");
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -121,8 +123,44 @@ if(isset($nome_login)){
 	  </center>
 	  
       <hr>
-	  Todos os sinais cadastrados por esse colaborador.
+	  <center>
+	  Sinais cadastrados por esse Você.
+	  </center>
+	  <br>
+	  <center>
+	  <?php
 	  
+	  function get_youtube_ID( $link ){
+	if( !isset( $link ) || empty( $link ) )
+		return;
+	preg_match( '/(?:https?:\/\/|www\.|gaming\.|m\.|^)youtu(?:be\.com\/watch\?(?:.*?&(?:amp;)?)?v=|\.be\/)([\w‌​\-]+)(?:&(?:amp;)?[\w\?=]*)?/', $link, $ID );
+	$YouTube_ID = isset( $ID[1] ) ? $ID[1] : false;
+	return $YouTube_ID;
+}
+
+	if(!empty($email_login)){
+	$query_pesquisa = "SELECT * FROM videos WHERE email LIKE '$email_login%'";
+	
+	$resultado_pesquisa = mysqli_query($conexao, $query_pesquisa);
+	
+	
+	if(mysqli_num_rows($resultado_pesquisa) <= 0){
+		echo "Nenhum usuário encontrado.";
+	}else{
+		while($rows = mysqli_fetch_assoc($resultado_pesquisa)){
+			$link = $rows['link'];
+			$youtube_ID = get_youtube_ID( $link );
+			
+			echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.$youtube_ID.'" frameborder="0" allowfullscreen></iframe> <br>';
+			
+			echo "Significado: ".$rows['significado']."<br>";
+			
+		}
+	}
+	}
+
+	  ?>
+	  </center>
 
 	  
       
