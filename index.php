@@ -25,7 +25,7 @@ session_destroy();
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      height: 200%;
+      height: 250%;
     }
     
     
